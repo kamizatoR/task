@@ -1,2 +1,26 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<%= render 'users/info_form', {user: @user,book: @book_new} %>
+
+<div>
+
+    <h2>Book detail</h2>
+
+    <table>
+ 
+      <tbody>
+
+        <tr>
+          <%= link_to user_path(@book.user.id) do %>
+            <%= @book.user.name %>
+           <% end %>
+        </tr>
+
+        <tr><%= @book.title %></tr>
+        <tr><%= @book.opinion %></tr>
+        <tr></tr>
+
+
+      </tbody>
+ 
+    </table>
+
+  </div>

@@ -3,25 +3,60 @@
   <head>
     <title>Bookers2</title>
 
+
+
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+  <header>
 
-    <%= render 'layouts/flash' %>
+    <a href="/">Bookers</a>
 
     <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+
+      <%= link_to "Home",user_path(current_user.id) %>
+      <%= link_to "Users", users_path %>
+      <%= link_to "Books", books_path %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
     <% else %>
-              <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-              </li>
+
+      <li class="nav-item">
+        <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+      </li>
+
+
+      <li class="nav-item">
+        <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
+      </li>
+
     <% end %>
+
+  </header>
+
+     <%= render 'layouts/flash' %>
+
       <%= yield %>
+
+  <footer>
+    <div>
+      <p>CopyRight Infratop.inc</p>
+    </div>
+  </footer>
   </body>
 </html>

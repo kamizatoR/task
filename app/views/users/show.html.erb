@@ -1,3 +1,29 @@
+
+<%= render 'info_form', {user: @user,book: @book_new}%>
+
 <div>
-  
-</div>
+
+    <h2>Books</h2>
+
+    <table>
+
+      <tbody>
+
+
+        <% @books.each do |books| %>
+          <tr>
+            <td>
+              <%= link_to book_path(books.id) do %>
+                <%= books.title %>
+              <% end %>
+            </td>
+
+            <td><%= books.opinion %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+
+    </table>
+
+  </div>

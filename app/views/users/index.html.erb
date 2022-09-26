@@ -1,2 +1,37 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<%= render 'info_form', {user: @user,book: @book_new}%>
+
+<div>
+
+    <h2>Users</h2>
+
+    <table>
+      
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+        </tr>
+        
+      </thead>
+  
+      <tbody>
+
+
+        <% @books.each do |books| %>
+          <tr>
+            <td>
+              <%= link_to book_path(books.id) do %>
+                <%= books.title %>
+              <% end %>
+            </td>
+
+            <td><%= books.opinion %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+
+    </table>
+
+  </div>

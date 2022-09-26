@@ -1,26 +1,54 @@
-<%= render 'users/info_form', {user: @user,book: @book_new} %>
+<main class="mb-auto d-flex">
+  <div class="container">
+    <div class="row">
+    <%= render 'users/info_form', {user: @user,book: @book_new} %>
 
-<div>
+    <div class="col-md-8 offset-md-1">
 
-    <h2>Book detail</h2>
+      <h2>Book detail</h2>
 
-    <table>
- 
-      <tbody>
+      <table class="table">
+        <tbody>
 
-        <tr>
-          <%= link_to user_path(@book.user.id) do %>
-            <%= @book.user.name %>
-           <% end %>
-        </tr>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.user.id) do %>
+                <%= image_tag @user.get_profile_image(80,80) %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
 
-        <tr><%= @book.title %></tr>
-        <tr><%= @book.opinion %></tr>
-        <tr></tr>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+
+            <td><%= @book.opinion %></td>
+
+            <% if @book.user == current_user %>
+
+              <td>
+                <%= link_to edit_book_path(@book.id) do %>
+                  <button type="button" class="btn btn-sm btn-success">Edit</button>
+                <% end %>
+              </td>
 
 
-      </tbody>
- 
-    </table>
+              <td>
+                 <%= link_to book_path(@book.id), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
+                  <button type="button" class="btn btn-sm btn-danger">Destroy</button>
+                 <% end %>
+              </td>
 
+            <% end %>
+          </tr>
+
+        </tbody>
+      </table>
+
+     </div>
+
+    </div>
   </div>
+</main>

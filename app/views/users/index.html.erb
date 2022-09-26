@@ -1,37 +1,45 @@
-<%= render 'info_form', {user: @user,book: @book_new}%>
+<main class="mb-auto d-flex">
+  <div class="container">
+    <div class="row">
+        <%= render 'info_form', {user: @user,book: @book_new}%>
 
-<div>
+        <div class="col-md-8 offset-md-1">
 
-    <h2>Users</h2>
+          <h2>Users</h2>
 
-    <table>
-      
-      <thead>
-        <tr>
-          <th>image</th>
-          <th>name</th>
-          <th></th>
-        </tr>
-        
-      </thead>
-  
-      <tbody>
+          <table class="table">
 
+            <thead>
 
-        <% @books.each do |books| %>
-          <tr>
-            <td>
-              <%= link_to book_path(books.id) do %>
-                <%= books.title %>
+              <tr>
+                <th>image</th>
+                <th>name</th>
+                <th colspan="3"></th>
+              </tr>
+
+            </thead>
+
+            <tbody>
+              <% @users.each do |users| %>
+
+                <tr>
+
+                  <td><%= image_tag users.get_profile_image(80,80) %></td>
+
+                  <td><%= users.name %></td>
+
+                  <td>
+                    <%= link_to "Show", user_path(users.id) %>
+                  </td>
+
+                </tr>
               <% end %>
-            </td>
 
-            <td><%= books.opinion %></td>
-          </tr>
-        <% end %>
+             </tbody>
 
-      </tbody>
+          </table>
 
-    </table>
-
-  </div>
+        </div>
+      </div>
+    </div>
+  </main>

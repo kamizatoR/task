@@ -1,5 +1,5 @@
 <main class="mb-auto d-flex">
-  <div class="container">
+  <div class="container px-5 px-sm-0">
     <div class="row">
 
         <%= render 'users/info_form', {user: @user,book: @book_new} %>
@@ -8,13 +8,13 @@
 
           <h2>Books</h2>
 
-          <table class="table">
+          <table class="table table-hover table-inverse">
               <thead>
 
               <tr>
                 <th></th>
                 <th>Title</th>
-                 <th>opinion</th>
+                <th>Opinion</th>
                 <th colspan="3"></th>
               </tr>
 
@@ -24,7 +24,9 @@
               <% @books.each do |books| %>
                 <tr>
                   <td>
-                    <%= image_tag books.user.get_profile_image(80,80) %>
+                    <%= link_to user_path(books.user.id) do %>
+                      <%= image_tag books.user.get_profile_image(80,80) %>
+                    <% end %>
                   </td>
 
                   <td>
